@@ -8,19 +8,22 @@ import { Ingresar } from "./pages/Ingresar";
 import { Registrar } from "./pages/Registrar";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Contactanos from "./pages/Contactanos";
+import { AuthProvider } from "./context/AuthContext";
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Pagina_Inicio />} />
-        <Route path="/sobre_nosotros" element={<Sobre_Nosotros />} />
-        <Route path="/planes" element={<Planes />} />
-        <Route path="/recetas" element={<RecetasWebFree />} />
-        <Route path="/contactanos" element={<Contactanos />} />
-        <Route path="/ingresar" element={<Ingresar />} />
-        <Route path="/registrar" element={<Registrar />} />
-      </Routes>
-    </BrowserRouter>
+    <AuthProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Pagina_Inicio />} />
+          <Route path="/sobre_nosotros" element={<Sobre_Nosotros />} />
+          <Route path="/planes" element={<Planes />} />
+          <Route path="/recetas" element={<RecetasWebFree />} />
+          <Route path="/contactanos" element={<Contactanos />} />
+          <Route path="/ingresar" element={<Ingresar />} />
+          <Route path="/registrar" element={<Registrar />} />
+        </Routes>
+      </BrowserRouter>
+    </AuthProvider>
   );
 }
 
