@@ -1,6 +1,5 @@
 import React from "react";
 import Pagina_Inicio from "./pages/Pagina_Inicio";
-
 function App() {
   return (
     <div className="bg-paleta2 w-full">
