@@ -13,8 +13,9 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
     cors({
-      origin: "http://localhost:5173", // El origen de tu frontend
-      credentials: true, // Esto es necesario si usas cookies o autenticación basada en sesión
+      // origin: "http://localhost:5173", 
+      origin:"frontend-production-29e6.up.railway.app",
+      credentials: true, 
     })
   );
 
