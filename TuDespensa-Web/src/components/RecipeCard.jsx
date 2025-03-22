@@ -2,9 +2,9 @@ import React from "react";
 
 export const RecipeCard = ({ image, name, description }) => {
   return (
-    <div className="justify-items-center border-3 rounded-3xl p-4 my-2 shadow-lg">
+    <button className="justify-items-center border rounded-3xl p-4 my-2 shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-2 cursor-pointer">
       <img
-        className="rounded-3xl py-3 w-full h-48 object-cover"
+        className="rounded-3xl py-3 w-full h-60 object-cover"
         src={image}
         alt={name}
       />
@@ -12,6 +12,6 @@ export const RecipeCard = ({ image, name, description }) => {
         <h4 className="text-center font-bold text-lg">{name}</h4>
         <p className="mx-3 text-gray-700">{description}</p>
       </div>
-    </div>
+    </button>
   );
 };

@@ -26,28 +26,18 @@ function RecetasWebFree() {
             description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam esse at perferendis officia dolor voluptatem nihil. Consequuntur delectus voluptatum officiis quidem eius dolorum numquam, dignissimos quia, labore praesentium sequi laudantium."
           />
           <RecipeCard
-            image="/images/receta_03.svg"
+            image="/images/receta_04.svg"
             name="Receta 4"
             description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam esse at perferendis officia dolor voluptatem nihil. Consequuntur delectus voluptatum officiis quidem eius dolorum numquam, dignissimos quia, labore praesentium sequi laudantium."
           />
           <RecipeCard
-            image="/images/receta_03.svg"
+            image="/images/receta_05.svg"
             name="Receta 5"
             description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam esse at perferendis officia dolor voluptatem nihil. Consequuntur delectus voluptatum officiis quidem eius dolorum numquam, dignissimos quia, labore praesentium sequi laudantium."
           />
           <RecipeCard
-            image="/images/receta_03.svg"
+            image="/images/receta_06.svg"
             name="Receta 6"
-            description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam esse at perferendis officia dolor voluptatem nihil. Consequuntur delectus voluptatum officiis quidem eius dolorum numquam, dignissimos quia, labore praesentium sequi laudantium."
-          />
-          <RecipeCard
-            image="/images/receta_03.svg"
-            name="Receta 7"
-            description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam esse at perferendis officia dolor voluptatem nihil. Consequuntur delectus voluptatum officiis quidem eius dolorum numquam, dignissimos quia, labore praesentium sequi laudantium."
-          />
-          <RecipeCard
-            image="/images/receta_03.svg"
-            name="Receta 8"
             description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam esse at perferendis officia dolor voluptatem nihil. Consequuntur delectus voluptatum officiis quidem eius dolorum numquam, dignissimos quia, labore praesentium sequi laudantium."
           />
         </div>
