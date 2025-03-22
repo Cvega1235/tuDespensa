@@ -17,7 +17,7 @@ export const Header = () => {
               <Link to="/planes">Planes</Link>
             </li>
             <li className="p-1.5 rounded-2xl hover:bg-paleta3">
-              <Link to="/recetas">Rectas</Link>
+              <Link to="/recetas">Recetas</Link>
             </li>
             <li className="p-1.5 rounded-2xl hover:bg-paleta3">
               <Link to="/contactanos">Contactanos</Link>

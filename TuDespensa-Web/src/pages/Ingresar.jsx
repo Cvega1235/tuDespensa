@@ -1,7 +1,7 @@
 import React from "react";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
-
+import { Link } from "react-router-dom";
 export const Ingresar = () => {
   return (
     <article>
@@ -34,7 +34,7 @@ export const Ingresar = () => {
           </div>
           <span className="flex gap-5 justify-center">
             <p>¿No tienes Cuenta?</p>
-            <p>Registrarse</p>
+            <Link to="/registrar">Registrarse</Link>
           </span>
         </div>
       </section>

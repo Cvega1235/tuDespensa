@@ -3,6 +3,7 @@ import { Header } from "../components/Header";
 import { SobreNosotros } from "../components/SobreNosotros";
 import { CardEquipo } from "../components/CardEquipo";
 import { Footer } from "../components/Footer";
+import { Link } from "react-router-dom";
 
 export const Sobre_Nosotros = () => {
   return (
@@ -99,7 +100,7 @@ export const Sobre_Nosotros = () => {
             Descargar La Aplicacion
           </button>
           <button className="p-4 text-white font-bold rounded-2xl bg-zinc-800 hover:bg-paleta5">
-            Inciar Sesion
+            <Link to="/ingresar">Iniciar sesion</Link>
           </button>
         </div>
       </section>

@@ -1,7 +1,7 @@
 import React from "react";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
-
+import { Link } from "react-router-dom";
 export const Registrar = () => {
   return (
     <article>
@@ -41,7 +41,7 @@ export const Registrar = () => {
           </div>
           <span className="flex gap-5 justify-center">
             <p>Tienes una cuenta</p>
-            <p>Ingresar</p>
+            <Link to="/ingresar">Ingresar</Link>
           </span>
         </div>
       </section>
