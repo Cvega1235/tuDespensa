@@ -75,8 +75,8 @@ function Pagina_Inicio() {
           </div>
         </section>
         <SobreNosotros />
-        <Footer />
       </article>
+      <Footer />
     </>
   );
 }

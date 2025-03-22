@@ -56,8 +56,8 @@ function RecetaWebFree() {
             </div>
           </div>
         </section>
-        <Footer />
       </article>
+      <Footer />
     </>
   );
 }

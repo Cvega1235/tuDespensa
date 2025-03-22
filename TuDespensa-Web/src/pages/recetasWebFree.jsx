@@ -51,8 +51,8 @@ function RecetasWebFree() {
             description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam esse at perferendis officia dolor voluptatem nihil. Consequuntur delectus voluptatum officiis quidem eius dolorum numquam, dignissimos quia, labore praesentium sequi laudantium."
           />
         </div>
-        <Footer />
       </article>
+      <Footer />
     </>
   );
 }

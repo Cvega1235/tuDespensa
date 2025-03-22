@@ -52,8 +52,8 @@ function Contactanos() {
             </div>
           </form>
         </div>
-        <Footer />
       </article>
+      <Footer />
     </>
   );
 }
