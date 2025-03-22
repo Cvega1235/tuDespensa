@@ -5,7 +5,7 @@ import { CardPlan } from "../components/CardPlan";
 
 export const Planes = () => {
   return (
-    <article>
+    <article className="bg-paleta2">
       <Header />
       <section className="flex flex-col px-8 py-4 gap-8 items-center">
         <h1 className="text-4xl font-bold">Nuestros Planes</h1>

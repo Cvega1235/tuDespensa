@@ -4,7 +4,7 @@ import { Footer } from "../components/Footer";
 function Contactanos() {
   return (
     <>
-      <article>
+      <article className="bg-paleta2">
         <Header />
         <div className="flex flex-col justify-center">
           <div className="relative w-full">

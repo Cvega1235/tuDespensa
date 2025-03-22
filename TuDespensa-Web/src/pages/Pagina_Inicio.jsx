@@ -5,7 +5,7 @@ import { Footer } from "../components/Footer";
 function Pagina_Inicio() {
   return (
     <>
-      <article>
+      <article className="bg-paleta2">
         <Header />
         <section>
           <div className="bg-[url('/images/Portada.svg')] bg-cover bg-no-repeat w-full h-96 flex items-center justify-center flex-col my-8">
@@ -30,7 +30,7 @@ function Pagina_Inicio() {
           </div>
         </section>
         <section className="flex flex-col px-8">
-            <h1 className="text-3xl px-3py-4">Descubre Tu Despensa</h1>
+          <h1 className="text-3xl px-3py-4">Descubre Tu Despensa</h1>
           <div>
             <div className="my-4 p-5 border rounded-2xl border-gray-400 flex hover:shadow-2xl hover:shadow-paleta5">
               <img

@@ -19,7 +19,7 @@ export const Ingresar = () => {
     if (isAuthenticated) navigate("/inicio");
   }, [isAuthenticated]);
   return (
-    <article>
+    <article className="bg-paleta2">
       <Header />
       <section className="flex h-130 justify-evenly">
         <img className="rounded-2xl" src="/images/imageIngresar.svg" alt="" />

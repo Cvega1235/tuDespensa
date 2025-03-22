@@ -21,7 +21,7 @@ export const Registrar = () => {
     reset();
   });
   return (
-    <article>
+    <article className="bg-paleta2">
       <Header />
       <section className="flex h-130 justify-evenly">
         <img className="rounded-2xl" src="/images/imageRegistrar.svg" alt="" />

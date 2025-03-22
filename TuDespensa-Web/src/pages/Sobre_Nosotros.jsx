@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 export const Sobre_Nosotros = () => {
   return (
-    <article>
+    <article className="bg-paleta2">
       <Header />
       <div className="flex px-8 justify-evenly my-8">
         <img className="rounded-2xl" src="/images/yo_y_los_papus.svg" alt="" />
