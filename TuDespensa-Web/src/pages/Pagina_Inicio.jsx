@@ -30,8 +30,8 @@ function Pagina_Inicio() {
           </div>
         </section>
         <section className="flex flex-col px-8">
-          <div>
             <h1 className="text-3xl px-3py-4">Descubre Tu Despensa</h1>
+          <div>
             <div className="my-4 p-5 border rounded-2xl border-gray-400 flex hover:shadow-2xl hover:shadow-paleta5">
               <img
                 className="w-32 h-32"
