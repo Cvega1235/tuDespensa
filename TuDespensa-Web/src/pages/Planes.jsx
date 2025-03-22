@@ -5,38 +5,40 @@ import { CardPlan } from "../components/CardPlan";
 
 export const Planes = () => {
   return (
-    <article className="bg-paleta2">
-      <Header />
-      <section className="flex flex-col px-8 py-4 gap-8 items-center">
-        <h1 className="text-4xl font-bold">Nuestros Planes</h1>
-        <div className="flex justify-evenly w-full">
-          <CardPlan
-            nombrePlan="Plan Estandar"
-            caracteristicas={[
-              "Organiza Tu despesa",
-              "Lista de compras",
-              "Recetas",
-            ]}
-          />
-          <CardPlan
-            nombrePlan="Plan Estandar"
-            caracteristicas={[
-              "Organiza Tu despesa",
-              "Lista de compras",
-              "Recetas",
-            ]}
-          />
-          <CardPlan
-            nombrePlan="Plan Estandar"
-            caracteristicas={[
-              "Organiza Tu despesa",
-              "Lista de compras",
-              "Recetas",
-            ]}
-          />
-        </div>
-      </section>
-      <Footer />
-    </article>
+    <>
+      <article className="bg-paleta2 min-h-screen flex flex-col">
+        <Header />
+        <section className="flex flex-col px-8 py-4 gap-8 items-center grow">
+          <h1 className="text-4xl font-bold">Nuestros Planes</h1>
+          <div className="flex justify-evenly w-full">
+            <CardPlan
+              nombrePlan="Plan Estandar"
+              caracteristicas={[
+                "Organiza Tu despesa",
+                "Lista de compras",
+                "Recetas",
+              ]}
+            />
+            <CardPlan
+              nombrePlan="Plan Estandar"
+              caracteristicas={[
+                "Organiza Tu despesa",
+                "Lista de compras",
+                "Recetas",
+              ]}
+            />
+            <CardPlan
+              nombrePlan="Plan Estandar"
+              caracteristicas={[
+                "Organiza Tu despesa",
+                "Lista de compras",
+                "Recetas",
+              ]}
+            />
+          </div>
+        </section>
+        <Footer />
+      </article>
+    </>
   );
 };
