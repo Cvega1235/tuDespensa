@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 export const Header = () => {
   return (
     <header className="p-4 w-full h-22">
@@ -7,18 +7,26 @@ export const Header = () => {
         <img src="/images/IconoDespensa.svg" alt="" className="w-12 h-12" />
         <nav className="flex align-middle justify-end w-full">
           <ul className="flex flex-row gap-5 items-center">
-            <li className="p-1.5 rounded-2xl hover:bg-paleta3">Inicio</li>
             <li className="p-1.5 rounded-2xl hover:bg-paleta3">
-              Sobre Nosotos
+              <Link to="/">Inicio</Link>
             </li>
-            <li className="p-1.5 rounded-2xl hover:bg-paleta3">Planes</li>
-            <li className="p-1.5 rounded-2xl hover:bg-paleta3">Rectas</li>
-            <li className="p-1.5 rounded-2xl hover:bg-paleta3">Contactanos</li>
+            <li className="p-1.5 rounded-2xl hover:bg-paleta3">
+              <Link to="/sobre_nosotros"> Sobre Nosotos</Link>
+            </li>
+            <li className="p-1.5 rounded-2xl hover:bg-paleta3">
+              <Link to="/planes">Planes</Link>
+            </li>
+            <li className="p-1.5 rounded-2xl hover:bg-paleta3">
+              <Link to="/recetas">Rectas</Link>
+            </li>
+            <li className="p-1.5 rounded-2xl hover:bg-paleta3">
+              <Link to="/contactanos">Contactanos</Link>
+            </li>
             <li className="p-1.5 rounded-2xl bg-paleta4 hover:bg-paleta3">
-              Ingresar
+              <Link to="/ingresar">Ingresar</Link>
             </li>
             <li className="p-1.5 rounded-2xl bg-paleta5 hover:bg-paleta3">
-              Registrase
+              <Link to="/registrar">Registrase</Link>
             </li>
           </ul>
         </nav>
