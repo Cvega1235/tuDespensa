@@ -2,11 +2,13 @@ import React from "react";
 
 export const SearchBarGreen = ({ placeholder = "Buscar receta" }) => {
   return (
-    <div className={`rounded-xl bg-paleta1 border pb-3 content-between`}>
-      <h3 className="text-center text-white">Tu Despensa</h3>
-      <div className="mx-2 border rounded-lg bg-white">
+    <div className="flex justify-center">
+      <div
+        className={`w-4xl rounded-xl bg-paleta1 border flex flex-col h-18 justify-between `}
+      >
+        <h3 className="text-xl text-center font-bold text-white">Recetas</h3>
         <input
-          className="w-full px-5 outline-none"
+          className="bg-white rounded-xl mx-3 mb-1 px-3 py-1"
           type="text"
           placeholder={placeholder}
         />

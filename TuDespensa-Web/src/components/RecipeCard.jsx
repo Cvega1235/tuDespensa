@@ -10,7 +10,9 @@ export const RecipeCard = ({ image, name, description }) => {
       />
       <div>
         <h4 className="text-center font-bold text-lg">{name}</h4>
-        <p className="mx-3 text-gray-700">{description}</p>
+        <p className="mx-3 text-gray-700 overflow-hidden hover:overflow-auto lg:max-h-30 sm:max-h-20">
+          {description}
+        </p>
       </div>
     </button>
   );
