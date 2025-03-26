@@ -8,4 +8,34 @@
   --color-paleta5: #ff6a00;
   --color-descripcion: #757575;
 }
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
 
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+  100% {
+    border-color: white;
+  }
+}
+
+/* Aplicamos la animación */
+.typing-text {
+  font-size: 3rem;
+  font-weight: bold;
+  color: white;
+  border-right: 4px solid white;
+  padding-right: 5px;
+  overflow: hidden;
+  white-space: nowrap;
+
+  /* Animaciones */
+  --animate-typing: typing 2s steps(20, end) forwards, blink 0.7s infinite;
+}

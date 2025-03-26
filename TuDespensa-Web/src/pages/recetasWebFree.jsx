@@ -6,8 +6,8 @@ import { Footer } from "../components/Footer";
 function RecetasWebFree() {
   return (
     <>
-      <article className="bg-paleta2">
-        <Header />
+      <Header />
+      <article className="bg-paleta2 pt-21">
         <SearchBarGreen />
         <div className="mt-3 max-w-49/50 mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           <RecipeCard

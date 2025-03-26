@@ -9,9 +9,9 @@ export const Sobre_Nosotros = () => {
   return (
     <article className="bg-paleta2">
       <Header />
-      <div className="flex px-8 justify-evenly my-8">
+      <div className="flex px-8 justify-evenly  flex-col pt-21 md:flex-row">
         <img className="rounded-2xl" src="/images/yo_y_los_papus.svg" alt="" />
-        <span className="flex flex-col items-center justify-center px-28 gap-8 w-auto">
+        <span className="flex flex-col items-center justify-center md:px-28 gap-8 w-auto">
           <h1 className="text-3xl">Sobre Nosotros</h1>
           <p className="text-descripcion text-[20px]">
             Detras de la aplicacion Tu Despensa se encuentra un equipo el cual
@@ -24,8 +24,8 @@ export const Sobre_Nosotros = () => {
           </p>
         </span>
       </div>
-      <section className="flex">
-        <div className="flex flex-col w-1/3 gap-4 px-8 items-center">
+      <section className="flex flex-col md:flex-row">
+        <div className="flex flex-col md:w-1/3 gap-4 px-8 items-center">
           <img className="w-32 h-32" src="/images/objetivo.svg" alt="" />
           <p>
             Tu Despensa busca convertirse en una plataforma innovadora y
@@ -36,7 +36,7 @@ export const Sobre_Nosotros = () => {
             facilitar la planificación de comidas de manera eficiente.
           </p>
         </div>
-        <div className="flex flex-col w-1/3 gap-4 px-4 items-center">
+        <div className="flex flex-col md:w-1/3 gap-4 px-4 items-center">
           <img className="w-32 h-32" src="/images/meta.svg" alt="" />
           <p>
             Tu Despensa busca convertirse en una plataforma innovadora y
@@ -47,7 +47,7 @@ export const Sobre_Nosotros = () => {
             facilitar la planificación de comidas de manera eficiente.
           </p>
         </div>
-        <div className="flex flex-col w-1/3 gap-4 px-4 items-center">
+        <div className="flex flex-col md:w-1/3 gap-4 px-4 items-center">
           <img className="w-32 h-32" src="/images/dispositivos.svg" alt="" />
           <p>
             Tu Despensa busca convertirse en una plataforma innovadora y
@@ -62,7 +62,7 @@ export const Sobre_Nosotros = () => {
       <section>
         <div className="my-4 px-8 flex flex-col items-center gap-8">
           <h1 className="text-3xl font-bold">Equipo de Tu Despensa</h1>
-          <div className="grid grid-cols-5 w-full">
+          <div className="grid md:grid-cols-5 w-full">
             <CardEquipo
               imagen="/images/Andrew.svg"
               nombre="Andrew"
@@ -95,7 +95,7 @@ export const Sobre_Nosotros = () => {
         <h1 className="text-2xl font-bold">
           Descarga la aplicacion o inicia sesion
         </h1>
-        <div className="flex items-center justify-evenly w-full">
+        <div className="grid items-center grid-rows-2 w-full md:grid-rows-1 md:grid-cols-2 gap-4">
           <button className="p-4 text-white font-bold rounded-2xl bg-zinc-800 hover:bg-paleta5">
             Descargar La Aplicacion
           </button>
