@@ -14,7 +14,7 @@ app.use(cookieParser());
 app.use(
   cors({
     // origin: "http://localhost:5173",
-    origin: "frontend-production-29e6.up.railway.app",
+    origin: "https://frontend-production-29e6.up.railway.app/registrar",
     credentials: true,
   })
 );
