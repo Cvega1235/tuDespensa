@@ -9,7 +9,7 @@ function RecetasWebFree() {
       <Header />
       <article className="bg-paleta2 pt-21">
         <SearchBarGreen />
-        <div className="mt-3 max-w-49/50 mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div className="mt-3 mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           <RecipeCard
             image="/images/receta_01.svg"
             name="Receta 1"
@@ -26,28 +26,18 @@ function RecetasWebFree() {
             description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam esse at perferendis officia dolor voluptatem nihil. Consequuntur delectus voluptatum officiis quidem eius dolorum numquam, dignissimos quia, labore praesentium sequi laudantium."
           />
           <RecipeCard
-            image="/images/receta_03.svg"
+            image="/images/receta_04.svg"
             name="Receta 4"
             description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam esse at perferendis officia dolor voluptatem nihil. Consequuntur delectus voluptatum officiis quidem eius dolorum numquam, dignissimos quia, labore praesentium sequi laudantium."
           />
           <RecipeCard
-            image="/images/receta_03.svg"
+            image="/images/receta_05.svg"
             name="Receta 5"
             description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam esse at perferendis officia dolor voluptatem nihil. Consequuntur delectus voluptatum officiis quidem eius dolorum numquam, dignissimos quia, labore praesentium sequi laudantium."
           />
           <RecipeCard
-            image="/images/receta_03.svg"
+            image="/images/receta_06.svg"
             name="Receta 6"
-            description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam esse at perferendis officia dolor voluptatem nihil. Consequuntur delectus voluptatum officiis quidem eius dolorum numquam, dignissimos quia, labore praesentium sequi laudantium."
-          />
-          <RecipeCard
-            image="/images/receta_03.svg"
-            name="Receta 7"
-            description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam esse at perferendis officia dolor voluptatem nihil. Consequuntur delectus voluptatum officiis quidem eius dolorum numquam, dignissimos quia, labore praesentium sequi laudantium."
-          />
-          <RecipeCard
-            image="/images/receta_03.svg"
-            name="Receta 8"
             description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam esse at perferendis officia dolor voluptatem nihil. Consequuntur delectus voluptatum officiis quidem eius dolorum numquam, dignissimos quia, labore praesentium sequi laudantium."
           />
         </div>

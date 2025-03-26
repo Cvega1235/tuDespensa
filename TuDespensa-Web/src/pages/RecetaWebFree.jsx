@@ -17,14 +17,14 @@ function RecetaWebFree() {
               description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam esse at perferendis officia dolor voluptatem nihil. Consequuntur delectus voluptatum officiis quidem eius dolorum numquam, dignissimos quia, labore praesentium sequi laudantium."
             />
             <RecipeCard
-              image="/images/receta_01.svg"
-              name="Receta 1"
+              image="/images/receta_02.svg"
+              name="Receta 2"
               description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam esse at perferendis officia dolor voluptatem nihil. Consequuntur delectus voluptatum officiis quidem eius dolorum numquam, dignissimos quia, labore praesentium sequi laudantium."
             />
           </div>
           <div className="flex flex-col w-7/10 border-3 p-3 m-2 rounded-2xl">
             <img
-              className="mx-3 rounded-3xl"
+              className="mx-3 rounded-3xl h-100"
               src="/images/receta_g.svg"
               alt=""
             />
