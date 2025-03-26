@@ -6,10 +6,10 @@ import { Footer } from "../components/Footer";
 function RecetasWebFree() {
   return (
     <>
-      <article>
+      <article className="bg-paleta2 w-full">
         <Header />
         <SearchBarGreen />
-        <div className="mt-3 max-w-49/50 mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div className="mt-3 mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           <RecipeCard
             image="/images/receta_01.svg"
             name="Receta 1"

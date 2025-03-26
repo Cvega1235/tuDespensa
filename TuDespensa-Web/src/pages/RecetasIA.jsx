@@ -16,7 +16,7 @@ function RecetasIA() {
               <h1 className="text-lg sm:text-xl md:text-2xl text-center h-30 items-center flex justify-center">
                 ¿Que Prepararemos hoy?
               </h1>
-              <div className="flex flex-col sm:flex-row mx-2 border-2 px-2 rounded-md">
+              <div className="flex flex-col sm:flex-row mx-2 border-2 px-2 rounded-md bg-white">
                 <div className="mb-2 sm:mb-0">#Vegetariana</div>
                 <input
                   className="w-full sm:w-auto mx-0 sm:mx-3"
@@ -25,16 +25,16 @@ function RecetasIA() {
                 />
               </div>
               <div className="mx-5">
-                <h3 className="text-sm sm:text-base">Tipos de comida</h3>
+                <h3 className="text-sm sm:text-base my-2">Tipos de comida</h3>
                 <ul className="flex flex-wrap justify-center gap-2">
                   <li className="bg-paleta4 px-1 border rounded-lg text-xs sm:text-sm">
-                    Desayuno
+                    Vegetariana
                   </li>
                   <li className="bg-paleta4 px-1 border rounded-lg text-xs sm:text-sm">
                     Almuerzo
                   </li>
                   <li className="bg-paleta4 px-1 border rounded-lg text-xs sm:text-sm">
-                    Merienda
+                    Desayuno
                   </li>
                   <li className="bg-paleta4 px-1 border rounded-lg text-xs sm:text-sm">
                     Cena
@@ -42,7 +42,7 @@ function RecetasIA() {
                 </ul>
               </div>
             </div>
-            <div className="mt-5 md:mt-0">
+            <div className="mt-5 md:mt-0 w-full md:w-3/10 mx-2">
               <h3 className="text-sm sm:text-base my-2">
                 Ingredientes en despensa
               </h3>

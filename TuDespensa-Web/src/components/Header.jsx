@@ -6,7 +6,7 @@ export const Header = () => {
       <div className="flex flex-row">
         <img src="/images/IconoDespensa.svg" alt="" className="w-12 h-12" />
         <nav className="flex align-middle justify-end w-full">
-          <ul className="flex flex-row gap-5 items-center">
+          <ul className="hidden flex-row gap-5 items-center">
             <li className="p-1.5 rounded-2xl hover:bg-paleta3">Inicio</li>
             <li className="p-1.5 rounded-2xl hover:bg-paleta3">
               Sobre Nosotos
