@@ -26,12 +26,15 @@ export const Registrar = () => {
       <article className="bg-paleta2 flex flex-col min-h-screen pt-21">
         <section className="flex md:h-130 justify-evenly flex-grow pb-8">
           <img
-            className="rounded-4xl object-cover hidden md:flex"
+            className="rounded-4xl object-cover hidden md:flex md:w-1/2"
             src="/images/imageRegistrar.svg"
             alt=""
           />
           <div className="flex flex-col w-xl px-8 gap-4 justify-center ">
-            <h1 className="text-3xl text-center">Registrarse</h1>
+            <div className="flex flex-col items-center">
+              <img src="/images/IconoDespensa.svg" className="w-16" alt="" />
+              <h1 className="text-3xl text-center">Registrase en TuDespensa</h1>
+            </div>
             <form className="flex flex-col" onSubmit={onSubmit}>
               <p>Nombre de Usuario</p>
               <input

@@ -1,72 +1,101 @@
 import { User } from "../models/user.model.js";
 import bcrypt from "bcryptjs";
 import { createAccessToken } from "../libs/jwt.js";
+import { generateVerificationCode } from "../utils/GenerateVerificationCode.js";
+import { sendVerificationEmail } from "../utils/sendVerificactionEmail.js";
 
 // export const register = async (req, res) => {
-//     const {email, password, username} = req.body;
+//   const { email, password, username } = req.body;
 
-//     try {
+//   try {
+//     const passwordHash = await bcrypt.hash(password, 10);
 
-//         const passwordHash = await bcrypt.hash(password, 10)
+//     const newUser = new User({
+//       username,
+//       email,
+//       password: passwordHash,
+//     });
 
-//         const newUser = new User({
-//             username,
-//             email,
-//             password: passwordHash,
-//         })
-
-//         const userFound = await newUser.save();
-//         const token = await createAccessToken({id: userFound._id});
-//         res.cookie('token', token);
-//         //res.json nos va devolver los datos que vayamos a usar en el frontend
-//         res.json({
-//             id: userFound._id,
-//             username: userFound.username,
-//             email: userFound.email,
-//             createdAd: userFound.createdAt,
-//             updateAt: userFound.updatedAt,
-//         })
-//     } catch (error) {
-//         res.status(500).json({message: error.message})
-//     }
+//     const userFound = await newUser.save();
+//     const token = await createAccessToken({ id: userFound._id });
+//     res.cookie("token", token);
+//     //res.json nos va devolver los datos que vayamos a usar en el frontend
+//     res.json({
+//       id: userFound._id,
+//       username: userFound.username,
+//       email: userFound.email,
+//       createdAd: userFound.createdAt,
+//       updateAt: userFound.updatedAt,
+//     });
+//   } catch (error) {
+//     res.status(500).json({ message: error.message });
+//   }
 // };
+
 export const register = async (req, res) => {
+  const { email, password, username } = req.body;
+
   try {
-    console.log("Datos recibidos:", req.body); // 👀 Verificar datos entrantes
-
-    const { email, password, username } = req.body;
-
-    if (!email || !password || !username) {
-      return res
-        .status(400)
-        .json({ message: "Todos los campos son obligatorios" });
-    }
-
     const passwordHash = await bcrypt.hash(password, 10);
+    const verificationCode = generateVerificationCode();
+
     const newUser = new User({
       username,
       email,
       password: passwordHash,
+      verificationCode, // Guardamos el código en la BD
+      isVerified: false, // Usuario no verificado al inicio
     });
 
     const userFound = await newUser.save();
-    console.log("Usuario guardado en MongoDB:", userFound); // 👀 Verificar usuario guardado
-
-    const token = await createAccessToken({ id: userFound._id });
-    res.cookie("token", token, { httpOnly: true });
+    await sendVerificationEmail(email, verificationCode); // Enviar el correo
 
     res.json({
+      message: "Registro exitoso. Revisa tu correo para verificar tu cuenta.",
       id: userFound._id,
-      username: userFound.username,
-      email: userFound.email,
-      createdAt: userFound.createdAt,
-      updatedAt: userFound.updatedAt,
     });
   } catch (error) {
-    console.error("Error en registro:", error); // 👀 Verificar errores en la consola
     res.status(500).json({ message: error.message });
   }
 };
+
+// export const register = async (req, res) => {
+//   try {
+//     console.log("Datos recibidos:", req.body); // 👀 Verificar datos entrantes
+
+//     const { email, password, username } = req.body;
+
+//     if (!email || !password || !username) {
+//       return res
+//         .status(400)
+//         .json({ message: "Todos los campos son obligatorios" });
+//     }
+
+//     const passwordHash = await bcrypt.hash(password, 10);
+//     const newUser = new User({
+//       username,
+//       email,
+//       password: passwordHash,
+//     });
+
+//     const userFound = await newUser.save();
+//     console.log("Usuario guardado en MongoDB:", userFound); // 👀 Verificar usuario guardado
+
+//     const token = await createAccessToken({ id: userFound._id });
+//     res.cookie("token", token, { httpOnly: true });
+
+//     res.json({
+//       id: userFound._id,
+//       username: userFound.username,
+//       email: userFound.email,
+//       createdAt: userFound.createdAt,
+//       updatedAt: userFound.updatedAt,
+//     });
+//   } catch (error) {
+//     console.error("Error en registro:", error); // 👀 Verificar errores en la consola
+//     res.status(500).json({ message: error.message });
+//   }
+// };
 
 export const login = async (req, res) => {
   const { email, password } = req.body;
@@ -119,4 +148,45 @@ export const profile = async (req, res) => {
     createdAt: userFound.createdAt,
     updateAt: userFound.updatedAt,
   });
+};
+
+export const sendVerificationCode = async (req, res) => {
+  const { email } = req.body;
+
+  // Buscar usuario
+  const user = await User.findOne({ email });
+  if (!user) return res.status(404).json({ message: "Usuario no encontrado" });
+
+  // Generar código de verificación
+  const verificationCode = generateVerificationCode();
+  user.verificationCode = verificationCode;
+  user.codeExpires = Date.now() + 10 * 60 * 1000; // Expira en 10 min
+
+  // Guardar el código en la base de datos
+  await user.save();
+
+  // Enviar el código al correo del usuario
+  await sendVerificationEmail(email, verificationCode);
+
+  res.json({ message: "Código de verificación enviado" });
+};
+
+export const verifyEmail = async (req, res) => {
+  const { email, verificationCode } = req.body;
+  try {
+    const user = await User.findOne({ email });
+
+    if (!user)
+      return res.status(404).json({ message: "Usuario no encontrado" });
+    if (user.verificationCode !== verificationCode)
+      return res.status(400).json({ message: "Código incorrecto" });
+
+    user.isVerified = true;
+    user.verificationCode = null;
+    await user.save();
+
+    res.json({ message: "Cuenta verificada con éxito" });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 };

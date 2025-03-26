@@ -98,6 +98,7 @@ export const Sobre_Nosotros = () => {
         <div className="grid items-center grid-rows-2 w-full md:grid-rows-1 md:grid-cols-2 gap-4">
           <button className="p-4 text-white font-bold rounded-2xl bg-zinc-800 hover:bg-paleta5">
             Descargar La Aplicacion
+            <a href="https://mega.nz/file/7CAiVC7Z#MdhqkwJhTLzHOW5WFgqDu72DnsyDcbcUEL04ML7-YMI"></a>
           </button>
           <button className="p-4 text-white font-bold rounded-2xl bg-zinc-800 hover:bg-paleta5">
             <Link to="/ingresar">Iniciar sesion</Link>

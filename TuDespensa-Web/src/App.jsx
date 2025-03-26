@@ -9,6 +9,8 @@ import { Registrar } from "./pages/Registrar";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Contactanos from "./pages/Contactanos";
 import { AuthProvider } from "./context/AuthContext";
+import { Aside } from "./components/Aside";
+import { VerifyEmail } from "./pages/VerifyEmail";
 function App() {
   return (
     <AuthProvider>
@@ -21,6 +23,8 @@ function App() {
           <Route path="/contactanos" element={<Contactanos />} />
           <Route path="/ingresar" element={<Ingresar />} />
           <Route path="/registrar" element={<Registrar />} />
+          <Route path="/despensa" element={<Aside />} />
+          <Route path="verify-email" element={<VerifyEmail />} />
         </Routes>
       </BrowserRouter>
     </AuthProvider>

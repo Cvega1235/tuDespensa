@@ -29,7 +29,10 @@ export const Ingresar = () => {
             alt=""
           />
           <div className="flex flex-col w-xl px-8 gap-4 justify-center ">
-            <h1 className="text-3xl text-center">Ingresar</h1>
+            <div className="flex flex-col items-center">
+              <img src="/images/IconoDespensa.svg" className="w-16" alt="" />
+              <h1 className="text-3xl text-center">Bienvenido a TuDespensa</h1>
+            </div>
             <form className="flex flex-col" onSubmit={onSubmit}>
               <p>Correo Electronico</p>
               <input
