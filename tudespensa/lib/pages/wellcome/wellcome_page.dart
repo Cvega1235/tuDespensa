@@ -10,12 +10,14 @@ class WellcomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final iskeyboard = MediaQuery.of(context).viewInsets.bottom != 0;
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            TopBanner(),
+            if (!iskeyboard) TopBanner(),
             SizedBox(height: 30),
             Container(
               padding: EdgeInsets.all(38),

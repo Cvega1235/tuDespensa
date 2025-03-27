@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tudespensa/constants.dart';
-import 'package:tudespensa/pages/home_page.dart';
+import 'package:tudespensa/pages/information_page.dart';
 import 'package:tudespensa/pages/objetivo/selection_button.dart';
 
 class ObjetivoPage extends StatelessWidget {
@@ -57,7 +57,7 @@ class ObjetivoPage extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => HomePage(),
+                    builder: (context) => InformationPage(),
                   ),
                 );
               },

@@ -23,7 +23,7 @@ class AuthProvider extends ChangeNotifier {
 
       final response = await http.post(
         Uri.parse(
-          "http://127.0.0.1:4000/api/login",
+          "http://127.0.0.1:3000/api/login",
         ),
         headers: {'Content-Type': 'application/json'},
         body: jsonEncode({
@@ -57,7 +57,7 @@ class AuthProvider extends ChangeNotifier {
 
       final response = await http.post(
         Uri.parse(
-          "http://localhost:4000/api/register",
+          "http://localhost:3000/api/register",
         ),
         headers: {
           'Content-Type': 'application/json'

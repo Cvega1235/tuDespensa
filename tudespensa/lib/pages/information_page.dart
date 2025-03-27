@@ -7,34 +7,33 @@ class InformationPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final iskeyboard = MediaQuery.of(context).viewInsets.bottom != 0;
     return Scaffold(
-      appBar: AppBar(
-        toolbarHeight: 30,
-        backgroundColor: BackgroundColor,
-      ),
+      resizeToAvoidBottomInset: false,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                "Tu\n" "Despensa",
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 30,
+          if (!iskeyboard)
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "Tu\n" "Despensa",
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 30,
+                  ),
                 ),
-              ),
-              SizedBox(width: 35),
-              Image.asset(
-                'assets/images/logo.png',
-                height: 56,
-                width: 56,
-              )
-            ],
-          ),
-          SizedBox(height: 30),
+                SizedBox(width: 35),
+                Image.asset(
+                  'assets/images/logo.png',
+                  height: 56,
+                  width: 56,
+                ),
+                SizedBox(height: 30),
+              ],
+            ),
           Text(
             "Informacion",
             style: TextStyle(
@@ -44,28 +43,32 @@ class InformationPage extends StatelessWidget {
             ),
           ),
           SizedBox(height: 25),
-          Text(
-            "Ingresa tus datos para poder ayudarte en tu objetivo.",
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-              color: Colors.black,
+          if (!iskeyboard)
+            Text(
+              "Ingresa tus datos para poder ayudarte en tu objetivo.",
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),
+              textAlign: TextAlign.center,
             ),
-            textAlign: TextAlign.center,
-          ),
-          SizedBox(height: 30),
+          if (!iskeyboard) SizedBox(height: 30),
           Column(
             children: [
               SizedBox(height: 8),
               Container(
                 width: 321,
-                height: 36,
+                height: 45,
                 color: Colors.white,
                 child: TextField(
+                  keyboardType: TextInputType.numberWithOptions(decimal: true),
                   decoration: InputDecoration(
                     label: Text(
-                      "1.67 m",
+                      "Estatura",
                     ),
+                    hintText: "1.67 m",
+                    hintStyle: TextStyle(color: Colors.black45),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
@@ -80,13 +83,16 @@ class InformationPage extends StatelessWidget {
               SizedBox(height: 8),
               Container(
                 width: 321,
-                height: 36,
+                height: 45,
                 color: Colors.white,
                 child: TextField(
+                  keyboardType: TextInputType.numberWithOptions(decimal: true),
                   decoration: InputDecoration(
                     label: Text(
-                      "78.6 kg",
+                      "Peso",
                     ),
+                    hintText: "78.6 kg",
+                    hintStyle: TextStyle(color: Colors.black45),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
@@ -101,13 +107,15 @@ class InformationPage extends StatelessWidget {
               SizedBox(height: 8),
               Container(
                 width: 321,
-                height: 36,
+                height: 45,
                 color: Colors.white,
                 child: TextField(
                   decoration: InputDecoration(
                     label: Text(
-                      "07/07/1997",
+                      "Fecha de nacimiento",
                     ),
+                    hintText: "07/07/1997",
+                    hintStyle: TextStyle(color: Colors.black45),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
@@ -122,13 +130,16 @@ class InformationPage extends StatelessWidget {
               SizedBox(height: 8),
               Container(
                 width: 321,
-                height: 36,
+                height: 45,
                 color: Colors.white,
                 child: TextField(
+                  keyboardType: TextInputType.text,
                   decoration: InputDecoration(
                     label: Text(
-                      "sexo",
+                      "Sexo",
                     ),
+                    hintText: "Masculino/Femenino",
+                    hintStyle: TextStyle(color: Colors.black45),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
