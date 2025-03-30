@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 export const SobreNosotros = () => {
   return (
     <div className="flex px-8 justify-evenly">
@@ -15,7 +15,7 @@ export const SobreNosotros = () => {
           </p>
         </p>
         <button className="bg-paleta1 p-4 rounded-2xl hover:bg-paleta3">
-          Mas informacion &rarr;
+          <Link to="/sobre_nosotros">Mas informacion &rarr;</Link>
         </button>
       </span>
     </div>

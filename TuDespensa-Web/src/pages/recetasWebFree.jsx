@@ -6,8 +6,8 @@ import { Footer } from "../components/Footer";
 function RecetasWebFree() {
   return (
     <>
-      <article className="bg-paleta2 w-full">
-        <Header />
+      <Header />
+      <article className="bg-paleta2 pt-21">
         <SearchBarGreen />
         <div className="mt-3 mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           <RecipeCard
@@ -41,8 +41,8 @@ function RecetasWebFree() {
             description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam esse at perferendis officia dolor voluptatem nihil. Consequuntur delectus voluptatum officiis quidem eius dolorum numquam, dignissimos quia, labore praesentium sequi laudantium."
           />
         </div>
-        <Footer />
       </article>
+      <Footer />
     </>
   );
 }

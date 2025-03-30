@@ -6,7 +6,7 @@ import { Footer } from "../components/Footer";
 function RecetaWebFree() {
   return (
     <>
-      <article>
+      <article className="bg-paleta2">
         <Header />
         <section className="flex">
           <div className="w-3/10 m-2">
@@ -56,8 +56,8 @@ function RecetaWebFree() {
             </div>
           </div>
         </section>
-        <Footer />
       </article>
+      <Footer />
     </>
   );
 }

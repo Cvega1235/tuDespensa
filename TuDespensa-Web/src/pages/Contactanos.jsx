@@ -5,8 +5,8 @@ function Contactanos() {
   return (
     <>
       <Header />
-      <article>
-        <div>
+      <article className="bg-paleta2 pt-21">
+        <div className="flex flex-col justify-center">
           <div className="relative w-full">
             {/* Imagen de fondo */}
             <img
