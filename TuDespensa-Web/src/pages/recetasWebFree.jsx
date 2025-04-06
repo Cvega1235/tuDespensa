@@ -7,7 +7,8 @@ function RecetasWebFree() {
   return (
     <>
       <Header />
-      <article className="bg-paleta2 pt-21">
+      <article className="bg-paleta2">
+        <h1 className="text-4xl text-center py-4">Recetas</h1>
         <SearchBarGreen />
         <div className="mt-3 mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           <RecipeCard

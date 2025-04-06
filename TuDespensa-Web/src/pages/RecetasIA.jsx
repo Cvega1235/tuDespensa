@@ -15,9 +15,11 @@ const ingredientes = [
   "Ingrediente 8",
 ];
 
-const itemStyle = "bg-paleta4 px-1 border rounded-xl content-center text-xs sm:text-sm h-8";
+const itemStyle =
+  "bg-paleta4 px-1 border rounded-xl content-center text-xs sm:text-sm h-8";
 
-const typeStyle = "bg-paleta4 px-1 border rounded-xl text-xs content-center sm:text-sm h-8";
+const typeStyle =
+  "bg-paleta4 px-1 border rounded-xl text-xs content-center sm:text-sm h-8";
 
 function RecetasIA() {
   return (
@@ -34,9 +36,11 @@ function RecetasIA() {
               <h1 className="text-lg sm:text-xl md:text-3xl text-center h-30 items-center flex justify-center">
                 ¿Que Prepararemos hoy?
               </h1>
-              <div className="flex flex-col items-center">
+              <div className="mx-2 flex flex-col items-center">
                 <div className="flex w-xl border-2 px-2 rounded-xl h-10 bg-white">
-                  <div className="mb-2 sm:mb-0 content-center">#Vegetariana</div>
+                  <div className="mb-2 sm:mb-0 content-center">
+                    #Vegetariana
+                  </div>
                   <input
                     className="w-full mx-0 sm:mx-3"
                     type="text"
@@ -46,16 +50,16 @@ function RecetasIA() {
                 <div className="w-md">
                   <h3 className="text-sm sm:text-base my-2">Tipos de comida</h3>
                   <ul className="grid grid-cols-4 gap-4 text-center ">
-                {tipos.map((tipo, index) => (
-                  <li key={index} className={typeStyle}>
-                    {tipo}
-                  </li>
-                ))}
-              </ul>
+                    {tipos.map((tipo, index) => (
+                      <li key={index} className={typeStyle}>
+                        {tipo}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </div>
             </div>
-            <div className="mt-5 md:mt-0 w-full md:w-3/10 mx-2 gap-3 flex flex-col text-center">
+            <div className="mt-5 md:mt-0 w-full mx-2 gap-3 flex flex-col text-center">
               <h3 className="text-sm sm:text-base">Ingredientes en despensa</h3>
               <ul className="grid grid-cols-2 gap-1 gap-y-2">
                 {ingredientes.map((ingrediente, index) => (
@@ -65,7 +69,9 @@ function RecetasIA() {
                 ))}
               </ul>
               <div>
-              <button className="bg-paleta1 w-2xs h-8 rounded-2xl border">Ver más</button>
+                <button className="bg-paleta1 w-2xs h-8 rounded-2xl border">
+                  Ver más
+                </button>
               </div>
             </div>
           </div>

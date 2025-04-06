@@ -7,7 +7,7 @@ export const Header = () => {
     setmenuVisble(!menuVisible);
   };
   return (
-    <header className="p-4 w-full h-22 fixed bg-paleta2">
+    <header className="p-4 w-full h-22 bg-paleta2">
       <div className="flex flex-row">
         <img
           src="/images/IconoDespensa.svg"
