@@ -3,7 +3,8 @@ import { useAuth } from "../context/AuthContext";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import { Link, useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import ReCAPTCHA from "react-google-recaptcha";
 export const Ingresar = () => {
   const {
     register,
@@ -12,12 +13,17 @@ export const Ingresar = () => {
   } = useForm();
   const { signin, errors: signinErrors, isAuthenticated, user } = useAuth();
   const navigate = useNavigate();
+  const [captchaValue, setCaptchaValue] = useState(null);
   const onSubmit = handleSubmit((data) => {
-    signin(data);
+    if (!captchaValue) {
+      alert("Porfavor completa el reCAPTCHA");
+      return;
+    }
+    signin({ ...data, captcha: captchaValue });
   });
   useEffect(() => {
-    if (isAuthenticated) navigate("/inicio");
-  }, [isAuthenticated]);
+    if (isAuthenticated) navigate("/administracion");
+  }, [isAuthenticated, navigate]);
   return (
     <>
       <Header />
@@ -58,6 +64,12 @@ export const Ingresar = () => {
               {errors.password && (
                 <p className="text-red-500">Password es requerido</p>
               )}
+              <div className="flex justify-center">
+                <ReCAPTCHA
+                  sitekey="6LcSyQQrAAAAAI6JS2BKgcLE-6T5jNBvITLLNidK"
+                  onChange={setCaptchaValue}
+                />
+              </div>
               <button className="bg-paleta1 p-2 rounded-2xl" type="submit">
                 Ingresar
               </button>

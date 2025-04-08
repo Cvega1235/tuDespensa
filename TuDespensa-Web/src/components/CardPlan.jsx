@@ -2,7 +2,7 @@ import React from "react";
 
 export const CardPlan = ({ nombrePlan, caracteristicas = [] }) => {
   return (
-    <div className="border border-descripcion px-8 py-4 rounded-2xl gap-8 hover:bg-paleta5 hover:text-white group">
+    <div className="border border-descripcion px-8 py-4 rounded-2xl gap-8 hover:bg-paleta4 hover:text-white group">
       <h1 className="text-4xl">{nombrePlan}</h1>
       <ul className="m-3">
         {caracteristicas.map((item, index) => (
@@ -14,7 +14,7 @@ export const CardPlan = ({ nombrePlan, caracteristicas = [] }) => {
           </li>
         ))}
       </ul>
-      <button className="bg-paleta1 w-full rounded-2xl p-2">Button</button>
+      <button className="bg-paleta3 w-full rounded-2xl p-2">Button</button>
     </div>
   );
 };

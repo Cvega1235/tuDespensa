@@ -16,26 +16,26 @@ export const AuthProvider = ({ children }) => {
   const [errors, setErrors] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  const signup = async (user) => {
+    try {
+      const res = await registerRequest(user);
+      console.log(res.data);
+      setIsAuthenticated(true);
+    } catch (error) {
+      setErrors(error.response.data);
+    }
+  };
+
   // const signup = async (user) => {
   //   try {
   //     const res = await registerRequest(user);
   //     console.log(res.data);
-  //     // setIsAuthenticated(true);
+  //     window.location.href = "/verify-email"; // Redirigir a la verificación
   //   } catch (error) {
   //     setErrors(error.response.data);
   //   }
   // };
 
-  const signup = async (user) => {
-    try {
-      const res = await registerRequest(user);
-      console.log(res.data);
-      window.location.href = "/verify-email"; // Redirigir a la verificación
-    } catch (error) {
-      setErrors(error.response.data);
-    }
-  };
-  
   const signin = async (user) => {
     try {
       const res = await loginRequest(user);

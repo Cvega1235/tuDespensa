@@ -1,12 +1,17 @@
 @import "tailwindcss";
 
 @theme {
-  --color-paleta1: #87af4b;
+  /* --color-paleta1: #87af4b;
   --color-paleta2: #fff9e5;
   --color-paleta3: #e6e02d;
   --color-paleta4: #f5a300;
-  --color-paleta5: #ff6a00;
+  --color-paleta5: #ff6a00; */
   --color-descripcion: #757575;
+  --color-paleta1: #091a03; /*Fondo footer verde oscuro*/
+  --color-paleta2: #f1f8fe; /*Fondo medio blanco azul*/
+  --color-paleta3: #f5a300; /*BOtones naranja*/
+  --color-paleta4: #3c5745; /*verde claro*/
+  --color-paleta5: #eeb160; /*hovers amarillo carito*/
 }
 @keyframes typing {
   from {

@@ -3,7 +3,9 @@ import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import ReCAPTCHA from "react-google-recaptcha";
+
 export const Registrar = () => {
   const {
     register,
@@ -12,13 +14,19 @@ export const Registrar = () => {
     reset,
   } = useForm();
   const { signup, errors: signupErrors, isAuthenticated, user } = useAuth();
+  const [captchaValue, setCaptchaValue] = useState(null);
   const navigate = useNavigate();
   useEffect(() => {
-    if (isAuthenticated) navigate("/inicio");
+    if (isAuthenticated) navigate("/administracion");
   }, [isAuthenticated, navigate]);
   const onSubmit = handleSubmit(async (data) => {
-    await signup(data);
+    if (!captchaValue) {
+      alert("Porfavor completa el reCAPTCHA");
+      return;
+    }
+    await signup({ ...data, captcha: captchaValue });
     reset();
+    setCaptchaValue(null);
   });
   return (
     <>
@@ -33,14 +41,13 @@ export const Registrar = () => {
           <div className="flex flex-col w-xl px-8 gap-4 justify-center ">
             <div className="flex flex-col items-center">
               <img src="/images/IconoDespensa.svg" className="w-16" alt="" />
-              <h1 className="text-3xl text-center">Registrase en TuDespensa</h1>
+              <h1 className="text-3xl text-center">Registrate en TuDespensa</h1>
             </div>
             <form className="flex flex-col" onSubmit={onSubmit}>
               <p>Nombre de Usuario</p>
               <input
                 className="bg-white border rounded-[3px]"
                 type="text"
-                name="nombreusuario"
                 {...register("username", {
                   required: true,
                 })}
@@ -74,7 +81,16 @@ export const Registrar = () => {
               {errors.password && (
                 <p className="text-red-500 text-sm">Contraseña es requerido</p>
               )}
-              <button type="submit" className="bg-paleta1 p-2 rounded-2xl">
+              <div>
+                <ReCAPTCHA
+                  sitekey="6LcSyQQrAAAAAI6JS2BKgcLE-6T5jNBvITLLNidK"
+                  onChange={setCaptchaValue}
+                />
+              </div>
+              <button
+                type="submit"
+                className="bg-paleta4 text-white p-2 rounded-2xl"
+              >
                 Registrarse
               </button>
             </form>

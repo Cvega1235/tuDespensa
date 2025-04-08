@@ -4,9 +4,8 @@ export const LogoEmpresa = () => {
   return (
     <section className="flex flex-col px-8">
       <div className="flex">
-        
-        <h1 className="text-2xl font-bold">Los Kollingas</h1>
         <img src="/images/losKollingas.svg" alt="" />
+        <h1 className="text-2xl font-bold text-white">Los Kollingas</h1>
       </div>
       <div className="flex gap-2">
         {/* <button>
