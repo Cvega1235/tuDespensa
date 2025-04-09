@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tudespensa/pages/user_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -20,10 +21,33 @@ class HomePage extends StatelessWidget {
                     height: 65,
                   ),
                   Spacer(flex: 2),
-                  Image.asset(
-                    'assets/images/mono.png',
-                    width: 60,
-                    height: 60,
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(50),
+                    child: Stack(
+                      children: [
+                        Image.asset(
+                          'assets/images/mono.png',
+                          width: 45,
+                          height: 45,
+                        ),
+                        Positioned.fill(
+                          child: Material(
+                            color: Colors.transparent,
+                            child: InkWell(
+                              splashColor: Colors.yellow.shade100,
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => UserPage(),
+                                  ),
+                                );
+                              },
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                 ],
               ),

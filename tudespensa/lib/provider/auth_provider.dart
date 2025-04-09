@@ -23,7 +23,8 @@ class AuthProvider extends ChangeNotifier {
 
       final response = await http.post(
         Uri.parse(
-          "http://127.0.0.1:3000/api/login",
+          //"https://backend-production-e141.up.railway.app/api/login", //para produccion
+          "http://localhost:4000/api/login", //para pruebas desde local
         ),
         headers: {'Content-Type': 'application/json'},
         body: jsonEncode({
@@ -57,7 +58,8 @@ class AuthProvider extends ChangeNotifier {
 
       final response = await http.post(
         Uri.parse(
-          "http://localhost:3000/api/register",
+          //"https://backend-production-e141.up.railway.app/api/register", //para produccion
+          "http://localhost:4000/api/login", //para pruebas desde local
         ),
         headers: {
           'Content-Type': 'application/json'

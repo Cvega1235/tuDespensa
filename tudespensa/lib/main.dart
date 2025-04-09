@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
           title: 'Material App',
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
-            primaryColor: PrimaryColor,
+            primaryColor: BackgroundColor,
             scaffoldBackgroundColor: BackgroundColor,
           ),
           home: WellcomePage(),

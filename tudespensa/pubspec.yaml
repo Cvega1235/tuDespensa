@@ -45,6 +45,13 @@ dev_dependencies:
     sdk: flutter
   flutter_screenutil: ^5.9.3
   intl: ^0.20.2
+  flutter_launcher_icons: ^0.14.3
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/icons/icon.png"
+  min_sdk_android: 21
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
