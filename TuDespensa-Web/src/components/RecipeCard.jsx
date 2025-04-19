@@ -1,8 +1,17 @@
 import React from "react";
 
-export const RecipeCard = ({ image, name, description }) => {
+export const RecipeCard = ({
+  image,
+  name,
+  description,
+  recipeData,
+  onRecipeClick,
+}) => {
   return (
-    <button className="justify-items-center border rounded-3xl p-4 my-2 shadow-md mx-2 transition-all duration-300 hover:shadow-xl hover:-translate-y-2 cursor-pointer">
+    <button
+      className="justify-items-center border rounded-3xl p-4 my-2 shadow-md mx-2 transition-all duration-300 hover:shadow-xl hover:-translate-y-2 cursor-pointer"
+      onClick={() => onRecipeClick(recipeData)} // Llama a la función al hacer clic
+    >
       <img
         className="rounded-4xl py-3 w-full h-60 object-cover"
         src={image}
