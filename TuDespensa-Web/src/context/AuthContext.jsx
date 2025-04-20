@@ -1,5 +1,10 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { loginRequest, verifyTokenRequest, registerRequest } from "../api/auth";
+import {
+  loginRequest,
+  verifyTokenRequest,
+  registerRequest,
+  registerAdminRequest,
+} from "../api/auth";
 import Cookies from "js-cookie";
 
 export const AuthContext = createContext();
@@ -23,6 +28,16 @@ export const AuthProvider = ({ children }) => {
       setIsAuthenticated(true);
     } catch (error) {
       setErrors(error.response.data);
+    }
+  };
+  const RegistrarUsuario = async (user) => {
+    try {
+      const res = await registerAdminRequest(user);
+      console.log("Usuario creado por admin:", res.data);
+      return res.data;
+    } catch (error) {
+      console.error("Error al registrar interesado:", error.response.data);
+      throw error;
     }
   };
 
@@ -55,6 +70,7 @@ export const AuthProvider = ({ children }) => {
     setIsAuthenticated(false);
     setUser(null);
   };
+
   useEffect(() => {
     if (errors.length > 0) {
       const timer = setTimeout(() => {
@@ -100,6 +116,7 @@ export const AuthProvider = ({ children }) => {
         user,
         isAuthenticated,
         errors,
+        RegistrarUsuario,
       }}
     >
       {children}

@@ -4,10 +4,13 @@ import { MdManageAccounts } from "react-icons/md";
 import { useState } from "react";
 import { BiUserCircle } from "react-icons/bi";
 import { CgFormatJustify } from "react-icons/cg";
+import { useAuth } from "../context/AuthContext";
+import { Link } from "react-router-dom";
 import React from "react";
 
 export const HeaderProfile = ({ interruptorAside }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const { logout } = useAuth();
   return (
     <div className="flex h-16 w-full justify-between p-4 bg-white">
       <button
@@ -16,7 +19,7 @@ export const HeaderProfile = ({ interruptorAside }) => {
       >
         <CgFormatJustify className="size-8" />
       </button>
-      <div>
+      <div> 
         <button onClick={() => setIsOpen(!isOpen)}>
           <span className="flex items-center gap-4 h-auto hover:bg-gray-200 px-4 rounded-2xl">
             <p className="text-2xl">Bienvenido</p>
@@ -35,8 +38,15 @@ export const HeaderProfile = ({ interruptorAside }) => {
                 <p>Configuracion</p>
               </li>
               <li className="flex items-center gap-2 hover:bg-gray-200 p-2">
-                <BiLogOut />
-                <p>Desconectarse</p>
+                <Link
+                  to="/"
+                  onClick={() => {
+                    logout();
+                  }}
+                >
+                  <BiLogOut />
+                  <p>Desconectarse</p>
+                </Link>
               </li>
             </ul>
           </div>

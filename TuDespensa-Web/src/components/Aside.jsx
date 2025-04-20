@@ -1,4 +1,4 @@
-import { FaUsers } from "react-icons/fa"; 
+import { FaUsers } from "react-icons/fa";
 import { GrPlan } from "react-icons/gr";
 import { TbReportAnalytics } from "react-icons/tb";
 import { FaRobot } from "react-icons/fa";
@@ -7,9 +7,12 @@ import { FaReceipt } from "react-icons/fa";
 import { TbListNumbers } from "react-icons/tb";
 import { BiLogOut } from "react-icons/bi";
 import { BsFillBasketFill } from "react-icons/bs";
+import { Link } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 import React from "react";
 
 export const Aside = () => {
+  const { logout } = useAuth();
   return (
     <section className="bg-paleta4  w-1/5 flex flex-col p-4 gap-3 h-screen text-white">
       <div className="flex w-full justify-center">
@@ -69,8 +72,16 @@ export const Aside = () => {
         </li>
       </ul>
       <button className="flex w-full mt-auto justify-center aling transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 ">
-        <BiLogOut className="size-6" />
-        <p>Desconectarse</p>
+        <Link
+          to="/"
+          onClick={() => {
+            logout();
+          }}
+          className="flex gap-2"
+        >
+          <BiLogOut className="size-6" />
+          <p>Desconectarse</p>
+        </Link>
       </button>
     </section>
   );

@@ -9,11 +9,13 @@ export const Administracion = () => {
     setIsAsideVisible(!isAsideVisible);
   };
   return (
-    <div className="flex">
+    <div className="flex h-screen overflow-hidden">
       {isAsideVisible && <Aside />}
       <div className="bg-paleta2 h-screen w-full">
         <HeaderProfile interruptorAside={interruptorAside} />
-        <InicioAdministrador />
+        <div className="flex-1 overflow-hidden">
+          <InicioAdministrador />
+        </div>
       </div>
     </div>
   );

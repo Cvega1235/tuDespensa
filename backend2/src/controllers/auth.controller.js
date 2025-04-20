@@ -61,7 +61,7 @@ export const register = async (req, res) => {
       username,
       email,
       password: passwordHash,
-      role:role||"Usuario"
+      role: role || "Usuario",
     });
 
     const userFound = await newUser.save();
@@ -74,6 +74,37 @@ export const register = async (req, res) => {
       email: userFound.email,
       createdAd: userFound.createdAt,
       updateAt: userFound.updatedAt,
+    });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+export const registerAdmin = async (req, res) => {
+  const { email, password, username, role } = req.body;
+  console.log("Registro por Admin:", req.body);
+
+  if (!username || !email || !password) {
+    return res.status(400).json({ message: "Todos los campos son requeridos" });
+  }
+
+  try {
+    const passwordHash = await bcrypt.hash(password, 10);
+
+    const newUser = new User({
+      username,
+      email,
+      password: passwordHash,
+      role: role || "Usuario",
+    });
+
+    const userFound = await newUser.save();
+
+    res.json({
+      id: userFound._id,
+      username: userFound.username,
+      email: userFound.email,
+      role: userFound.role,
+      createdAt: userFound.createdAt,
     });
   } catch (error) {
     res.status(500).json({ message: error.message });
