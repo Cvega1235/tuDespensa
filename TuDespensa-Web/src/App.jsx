@@ -3,7 +3,6 @@ import Pagina_Inicio from "./pages/Pagina_Inicio";
 import { Sobre_Nosotros } from "./pages/Sobre_Nosotros";
 import { Planes } from "./pages/Planes";
 import RecetasWebFree from "./pages/recetasWebFree";
-import RecetaWebFree from "./pages/RecetaWebFree";
 import { Ingresar } from "./pages/Ingresar";
 import { Registrar } from "./pages/Registrar";
 import { BrowserRouter, Route, Routes } from "react-router-dom";

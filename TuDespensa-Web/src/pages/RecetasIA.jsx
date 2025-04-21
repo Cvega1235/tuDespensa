@@ -1,6 +1,26 @@
 import React from "react";
 import Sidebar from "../components/Sidebar";
 import { RecipeCard } from "../components/RecipeCard";
+
+const tipos = ["Vegetariana", "Vegana", "Almuerzo", "Cena"];
+
+const ingredientes = [
+  "Ingrediente 1",
+  "Ingrediente 2",
+  "Ingrediente 3",
+  "Ingrediente 4",
+  "Ingrediente 5",
+  "Ingrediente 6",
+  "Ingrediente 7",
+  "Ingrediente 8",
+];
+
+const itemStyle =
+  "bg-paleta4 px-1 border rounded-xl content-center text-xs sm:text-sm h-8";
+
+const typeStyle =
+  "bg-paleta4 px-1 border rounded-xl text-xs content-center sm:text-sm h-8";
+
 function RecetasIA() {
   return (
     <>
@@ -13,65 +33,46 @@ function RecetasIA() {
           </h1>
           <div className="flex flex-col md:flex-row justify-between">
             <div className="w-full md:w-7/10">
-              <h1 className="text-lg sm:text-xl md:text-2xl text-center h-30 items-center flex justify-center">
+              <h1 className="text-lg sm:text-xl md:text-3xl text-center h-30 items-center flex justify-center">
                 ¿Que Prepararemos hoy?
               </h1>
-              <div className="flex flex-col sm:flex-row mx-2 border-2 px-2 rounded-md bg-white">
-                <div className="mb-2 sm:mb-0">#Vegetariana</div>
-                <input
-                  className="w-full sm:w-auto mx-0 sm:mx-3"
-                  type="text"
-                  placeholder="Ingrese sus preferencias"
-                />
-              </div>
-              <div className="mx-5">
-                <h3 className="text-sm sm:text-base my-2">Tipos de comida</h3>
-                <ul className="flex flex-wrap justify-center gap-2">
-                  <li className="bg-paleta4 px-1 border rounded-lg text-xs sm:text-sm">
-                    Vegetariana
-                  </li>
-                  <li className="bg-paleta4 px-1 border rounded-lg text-xs sm:text-sm">
-                    Almuerzo
-                  </li>
-                  <li className="bg-paleta4 px-1 border rounded-lg text-xs sm:text-sm">
-                    Desayuno
-                  </li>
-                  <li className="bg-paleta4 px-1 border rounded-lg text-xs sm:text-sm">
-                    Cena
-                  </li>
-                </ul>
+              <div className="mx-2 flex flex-col items-center">
+                <div className="flex w-xl border-2 px-2 rounded-xl h-10 bg-white">
+                  <div className="mb-2 sm:mb-0 content-center">
+                    #Vegetariana
+                  </div>
+                  <input
+                    className="w-full mx-0 sm:mx-3"
+                    type="text"
+                    placeholder="Ingrese sus preferencias"
+                  />
+                </div>
+                <div className="w-md">
+                  <h3 className="text-sm sm:text-base my-2">Tipos de comida</h3>
+                  <ul className="grid grid-cols-4 gap-4 text-center ">
+                    {tipos.map((tipo, index) => (
+                      <li key={index} className={typeStyle}>
+                        {tipo}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             </div>
-            <div className="mt-5 md:mt-0 w-full md:w-3/10 mx-2">
-              <h3 className="text-sm sm:text-base my-2">
-                Ingredientes en despensa
-              </h3>
-              <ul className="grid grid-cols-2 gap-1 gap-y-2 text-center">
-                <li className="bg-paleta4 px-1 border rounded-lg text-xs sm:text-sm">
-                  Ingrediente 1
-                </li>
-                <li className="bg-paleta4 px-1 border rounded-lg text-xs sm:text-sm">
-                  Ingrediente 2
-                </li>
-                <li className="bg-paleta4 px-1 border rounded-lg text-xs sm:text-sm">
-                  Ingrediente 3
-                </li>
-                <li className="bg-paleta4 px-1 border rounded-lg text-xs sm:text-sm">
-                  Ingrediente 4
-                </li>
-                <li className="bg-paleta4 px-1 border rounded-lg text-xs sm:text-sm">
-                  Ingrediente 5
-                </li>
-                <li className="bg-paleta4 px-1 border rounded-lg text-xs sm:text-sm">
-                  Ingrediente 6
-                </li>
-                <li className="bg-paleta4 px-1 border rounded-lg text-xs sm:text-sm">
-                  Ingrediente 7
-                </li>
-                <li className="bg-paleta4 px-1 border rounded-lg text-xs sm:text-sm">
-                  Ingrediente 8
-                </li>
+            <div className="mt-5 md:mt-0 w-full mx-2 gap-3 flex flex-col text-center">
+              <h3 className="text-sm sm:text-base">Ingredientes en despensa</h3>
+              <ul className="grid grid-cols-2 gap-1 gap-y-2">
+                {ingredientes.map((ingrediente, index) => (
+                  <li key={index} className={itemStyle}>
+                    {ingrediente}
+                  </li>
+                ))}
               </ul>
+              <div>
+                <button className="bg-paleta1 w-2xs h-8 rounded-2xl border">
+                  Ver más
+                </button>
+              </div>
             </div>
           </div>
           <div>
