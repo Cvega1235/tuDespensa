@@ -251,6 +251,7 @@ export const login = async (req, res) => {
       email: userFound.email,
       createdAd: userFound.createdAt,
       updateAt: userFound.updatedAt,
+      role: userFound.role,
     });
   } catch (error) {
     console.error("Error en login", error);
@@ -276,6 +277,7 @@ export const verifyToken = async (req, res) => {
       id: userFound._id,
       username: userFound.username,
       email: userFound.email,
+      role: userFound.role,
     });
   });
 };

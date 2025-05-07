@@ -19,15 +19,15 @@ export const HeaderProfile = ({ interruptorAside }) => {
       >
         <CgFormatJustify className="size-8" />
       </button>
-      <div> 
-        <button onClick={() => setIsOpen(!isOpen)}>
-          <span className="flex items-center gap-4 h-auto hover:bg-gray-200 px-4 rounded-2xl">
+      <div className="relative">
+        <button className="w-full" onClick={() => setIsOpen(!isOpen)}>
+          <span className="flex items-center gap-4 h-auto hover:bg-gray-200 px-4 rounded-2xl w-auto">
             <p className="text-2xl">Bienvenido</p>
             <BiUserCircle className="size-8" />
           </span>
         </button>
         {isOpen && (
-          <div className="bg-white">
+          <div className="bg-white absolute z-50 rounded-lg w-full">
             <ul className="flex flex-col">
               <li className="flex items-center gap-2 hover:bg-gray-200 p-2">
                 <MdManageAccounts />
@@ -37,8 +37,9 @@ export const HeaderProfile = ({ interruptorAside }) => {
                 <AiFillSetting />
                 <p>Configuracion</p>
               </li>
-              <li className="flex items-center gap-2 hover:bg-gray-200 p-2">
+              <li className="flex items-center hover:bg-gray-200 p-2 transition delay-150 duration-300 ease-in-out hover:-translate-y-1">
                 <Link
+                  className="flex items-center gap-2 w-full"
                   to="/"
                   onClick={() => {
                     logout();

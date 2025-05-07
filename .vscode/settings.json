@@ -1,3 +1,4 @@
 {
-  "idf.pythonInstallPath": "/usr/bin/python"
+  "idf.pythonInstallPath": "/usr/bin/python",
+  "cmake.sourceDirectory": "/home/gabrielcam/Desktop/Proyectos_aprendizaje_etc/tuDespensa/tudespensa/linux"
 }

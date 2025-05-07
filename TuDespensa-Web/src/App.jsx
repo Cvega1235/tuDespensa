@@ -10,6 +10,8 @@ import { Administracion } from "./pages/Administracion";
 import Contactanos from "./pages/Contactanos";
 import { AuthProvider } from "./context/AuthContext";
 import { ProtectedRoute } from "./ProtectedRoute";
+import NotFound from "./pages/NotFound";
+import { InicioAdministrador } from "./components/InicioAdministrador";
 function App() {
   return (
     <AuthProvider>
@@ -22,8 +24,11 @@ function App() {
           <Route path="/contactanos" element={<Contactanos />} />
           <Route path="/ingresar" element={<Ingresar />} />
           <Route path="/registrar" element={<Registrar />} />
+          <Route path="*" element={<NotFound />} />
           <Route element={<ProtectedRoute />}>
-            <Route path="/administracion" element={<Administracion />} />
+            <Route path="/administracion" element={<Administracion />}>
+              <Route index element={<InicioAdministrador />} />
+            </Route>
           </Route>
         </Routes>
       </BrowserRouter>

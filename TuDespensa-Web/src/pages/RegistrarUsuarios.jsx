@@ -16,22 +16,22 @@ export const RegistrarUsuario = ({ onClose, user, onSave }) => {
         email: user.email || "",
         role: user.role || "",
         password: "",
-        status: user.status || "",
+        status: user.status !== undefined ? String(user.status) : "",
       });
     }
   }, [user]);
-
   const handleChange = (e) => {
     const { name, value } = e.target;
+
     setFormData((prevData) => ({
       ...prevData,
-      [name]: value,
+      [name]: name === "status" ? value === "true" : value,
     }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Datos enviados al guardar:", formData); // 👈 Agrega esto
+    console.log("Datos enviados al guardar:", formData);
     onSave(formData);
   };
 
@@ -104,8 +104,8 @@ export const RegistrarUsuario = ({ onClose, user, onSave }) => {
               className="mt-1 block w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
             >
               <option value="">Estado del usuario</option>
-              <option value={true}>Activo</option>
-              <option value={false}>Desactivado</option>
+              <option value="true">Activo</option>
+              <option value="false">Desactivado</option>
             </select>
           </div>
           <button
