@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:tudespensa/provider/goal_provider.dart';
 
-class SelectionButton extends StatefulWidget {
+class SelectionButton extends StatelessWidget {
   const SelectionButton({super.key});
-
-  @override
-  State<SelectionButton> createState() => _SelectionButtonState();
-}
-
-class _SelectionButtonState extends State<SelectionButton> {
-  String? selectedGoal;
 
   @override
   Widget build(BuildContext context) {
@@ -18,39 +13,42 @@ class _SelectionButtonState extends State<SelectionButton> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             _buildGoalOption(
+              context: context,
               title: "Bajar de peso",
               imagePath: "assets/images/bajarPeso.png",
-              value: "lose",
+              value: "Bajar de peso",
             ),
             _buildGoalOption(
+              context: context,
               title: "Subir de peso",
               imagePath: "assets/images/ganarPeso.png",
-              value: "gain",
+              value: "Subir de peso",
             ),
           ],
         ),
         SizedBox(height: 20),
         _buildGoalOption(
+          context: context,
           title: "Mantener Peso",
           imagePath: "assets/images/mantenerPeso.png",
-          value: "maintain",
+          value: "Mantener Peso",
         ),
       ],
     );
   }
 
   Widget _buildGoalOption({
+    required BuildContext context,
     required String title,
     required String imagePath,
     required String value,
   }) {
-    bool isSelected = selectedGoal == value;
+    final goalProvider = Provider.of<GoalProvider>(context);
+    final isSelected = goalProvider.selectedGoal == value;
 
     return InkWell(
       onTap: () {
-        setState(() {
-          selectedGoal = value;
-        });
+        goalProvider.setSelectedGoal(value);
       },
       child: Container(
         width: 150,

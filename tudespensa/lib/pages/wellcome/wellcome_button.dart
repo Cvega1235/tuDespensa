@@ -24,10 +24,10 @@ class WellcomeButton extends StatelessWidget {
           borderRadius: BorderRadius.all(Radius.circular(50)),
           color: color,
         ),
-        width: 135,
+        width: 140,
         height: 50,
         child: Padding(
-          padding: EdgeInsets.all(10),
+          padding: EdgeInsets.all(14),
           child: Text(
             title,
             textAlign: TextAlign.center,

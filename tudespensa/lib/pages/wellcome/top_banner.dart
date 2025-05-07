@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TopBanner extends StatelessWidget {
   const TopBanner({super.key});
@@ -23,14 +24,14 @@ class TopBanner extends StatelessWidget {
                 "Tu\n" "Despensa",
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 35,
+                  fontSize: 35.sp,
                 ),
               ),
               SizedBox(width: 35),
               Image.asset(
                 'assets/images/logo.png',
-                height: 70,
-                width: 70,
+                height: 80,
+                width: 80,
               )
             ],
           ),

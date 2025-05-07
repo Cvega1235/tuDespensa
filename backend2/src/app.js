@@ -5,6 +5,11 @@ import cors from "cors";
 
 import authRoutes from "./routes/auth.routes.js";
 import tasksRoutes from "./routes/tasks.routes.js";
+import goalRoutes from "./routes/goal.routes.js";
+import informationRoutes from "./routes/information.routes.js";
+import userRoutes from "./routes/user.routes.js";
+
+
 
 const app = express();
 
@@ -22,5 +27,11 @@ app.use(
 app.use("/api", authRoutes);
 
 app.use("/api", tasksRoutes); //prueba de validar token y que este logeado el usuario para entrar ahi
+
+app.use("/api", goalRoutes);
+
+app.use("/api", informationRoutes);
+
+app.use("/api", userRoutes);
 
 export default app;

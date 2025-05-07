@@ -1,4 +1,5 @@
 import { User } from "../models/user.model.js";
+import TempUser from "../models/tempuser.model.js";
 import bcrypt from "bcryptjs";
 import { createAccessToken } from "../libs/jwt.js";
 import { generateVerificationCode } from "../utils/GenerateVerificationCode.js";
@@ -303,3 +304,176 @@ export const verifyEmail = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// PARA LA APLICACION MOBILE
+// Solicitar código para registro
+export const requestRegisterCode = async (req, res) => {
+  const { email } = req.body;
+
+  try {
+    // Verificar si el correo ya está registrado en usuarios reales
+    const userExists = await User.findOne({ email });
+    if (userExists) {
+      return res.status(400).json({ message: "Este correo ya está registrado." });
+    }
+
+    // Generar un código de verificación
+    const verificationCode = generateVerificationCode(); // ejemplo: devuelve "123456"
+    const verificationExpires = new Date(Date.now() + 10 * 60 * 1000); // 10 minutos
+
+    // Eliminar registros temporales anteriores si existen
+    await TempUser.deleteOne({ email });
+
+    // Guardar en la colección temporal
+    const newTempUser = new TempUser({ email, verificationCode, verificationExpires });
+    await newTempUser.save();
+
+    // Enviar el código por correo
+    await sendVerificationEmail(email, verificationCode);
+
+    res.status(200).json({ message: "Código de verificación enviado." });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error al generar el código." });
+  }
+};
+
+// Verificar el código y registrar al usuario
+export const verifyRegisterCode = async (req, res) => {
+  const { email, codigo, password, nombre } = req.body;
+
+  try {
+    // Buscar el usuario temporal
+    const tempUser = await TempUser.findOne({ email });
+
+    if (!tempUser) {
+      return res.status(404).json({ message: "Usuario no encontrado." });
+    }
+
+    // Verificar código
+    if (tempUser.verificationCode !== codigo) {
+      return res.status(400).json({ message: "Código incorrecto." });
+    }
+
+    // Verificar expiración
+    if (new Date(tempUser.verificationExpires) < new Date()) {
+      return res.status(400).json({ message: "El código ha expirado." });
+    }
+
+    // Hashear contraseña y crear usuario final
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const newUser = new User({
+      email,
+      username: nombre,
+      password: hashedPassword,
+    });
+
+    await newUser.save(); // Guardamos el usuario real
+    await TempUser.deleteOne({ email }); // Eliminamos al usuario temporal
+
+    // Crear el token
+    const token = jwt.sign(
+      { userId: newUser._id, email: newUser.email },
+      TOKEN_SECRET,
+      { expiresIn: "1d" }
+    );
+    
+
+    res.status(200).json({ user: newUser, token }); 
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error al verificar el código." });
+  }
+};
+
+// Solicitar código para login
+export const requestLoginCode = async (req, res) => {
+  const { email } = req.body;
+
+  try {
+    // Buscar al usuario por correo
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(404).json({ message: "Usuario no encontrado." });
+    }
+
+    // Generar un código de verificación
+    const verificationCode = generateVerificationCode();
+    const verificationExpires = new Date();
+    verificationExpires.setMinutes(verificationExpires.getMinutes() + 10); // Código válido por 10 minutos
+
+    // Guardar el código temporalmente
+    user.verificationCode = verificationCode;
+    user.verificationExpires = verificationExpires;
+    await user.save();
+
+    // Enviar el código por correo
+    await sendVerificationEmail(email, verificationCode);
+
+    res.status(200).json({ message: "Código de verificación enviado." });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error al generar el código." });
+  }
+};
+
+
+// Verificar código y login
+export const verifyLoginCode = async (req, res) => {
+  const { email, verificationCode, password } = req.body;
+
+  try {
+    // Buscar al usuario
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(404).json({ message: "Usuario no encontrado." });
+    }
+
+    // Verificar si el código de verificación es correcto y si no ha expirado
+    if (user.verificationCode !== verificationCode) {
+      return res.status(400).json({ message: "Código incorrecto." });
+    }
+
+    if (new Date(user.verificationExpires) < new Date()) {
+      return res.status(400).json({ message: "El código ha expirado." });
+    }
+
+    // Verificar la contraseña
+    const isPasswordCorrect = await bcrypt.compare(password, user.password);
+    if (!isPasswordCorrect) {
+      return res.status(400).json({ message: "Contraseña incorrecta." });
+    }
+
+    // Generar JWT
+    const token = jwt.sign(
+      { userId: user._id, email: user.email },
+      TOKEN_SECRET,
+      { expiresIn: "1d" }
+    );
+
+    res.status(200).json({ message: "Login exitoso.", token });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error al verificar el código o la contraseña." });
+  }
+};
+

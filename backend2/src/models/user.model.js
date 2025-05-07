@@ -24,6 +24,12 @@ const userSchema = new mongoose.Schema(
       enum: ["Usuario", "Administrador"],
       default: "Usuario",
     },
+    verificationCode: {
+      type: String,
+    },
+    verificationExpires: {
+      type: Date,
+    },    
   },
   {
     timestamps: true,

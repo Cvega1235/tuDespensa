@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart'; // ✅ Responsividad
 import 'package:tudespensa/constants.dart';
-import 'package:tudespensa/pages/register_page.dart';
-import 'package:tudespensa/pages/login_page.dart';
+import 'package:tudespensa/pages/login/login_request_page.dart';
+import 'package:tudespensa/pages/register/register_request_page.dart';
 import 'package:tudespensa/pages/wellcome/top_banner.dart';
 import 'package:tudespensa/pages/wellcome/wellcome_button.dart';
 
@@ -10,78 +11,75 @@ class WellcomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final iskeyboard = MediaQuery.of(context).viewInsets.bottom != 0;
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            if (!iskeyboard) TopBanner(),
-            SizedBox(height: 30),
+            TopBanner(),
+            SizedBox(height: 20.h), // ✅ Responsivo
             Container(
-              padding: EdgeInsets.all(38),
+              padding: EdgeInsets.all(38.w), // ✅ Responsivo
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  SizedBox(height: 20),
+                  SizedBox(height: 15.h),
                   Text(
                     "Cocina fácil, come inteligente",
                     style: TextStyle(
-                      fontSize: 24,
+                      fontSize: 20.sp, // ✅ Responsivo
                       fontWeight: FontWeight.w700,
                       color: Colors.black,
                     ),
                     textAlign: TextAlign.center,
                   ),
-                  SizedBox(height: 100),
+                  SizedBox(height: 25.h),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       WellcomeButton(
                         title: "Registrarse",
                         textColor: Colors.black,
-                        color: BottonColor,
+                        color: Naranja,
                         tapEvent: () {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => RegisterPage(),
-                              //builder: (context) => ObjetivoPage(),
+                              builder: (context) => RegisterRequestPage(),
                             ),
                           );
                         },
                       ),
-                      SizedBox(width: 35),
+                      SizedBox(width: 10.w),
                       WellcomeButton(
                         title: "Iniciar sesión",
-                        textColor: Colors.black,
-                        color: PrimaryColor,
+                        textColor: Colors.white,
+                        color: Verde,
                         tapEvent: () {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => LoginPage(),
-                              //builder: (context) => InformationPage(),
+                              builder: (context) => LoginRequestPage(),
                             ),
                           );
                         },
                       ),
                     ],
                   ),
-                  SizedBox(height: 100),
+                  SizedBox(height: 20.h),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
                         "Los Kollingas",
-                        style: TextStyle(fontSize: 26),
+                        style: TextStyle(fontSize: 14.sp), // ✅ Responsivo
                       ),
-                      SizedBox(width: 15),
+                      SizedBox(width: 15.w),
                       Image.asset(
                         "assets/images/logo_empresa.png",
-                        height: 45,
-                        width: 45,
+                        height: 45.h,
+                        width: 45.w,
                       )
                     ],
                   )
