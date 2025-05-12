@@ -12,8 +12,12 @@ import { useAuth } from "../context/AuthContext";
 import React from "react";
 
 const navItems = [
-  { icon: <FaUsers />, label: "Lista de Usuarios", to: "/usuarios" },
-  { icon: <TbListNumbers />, label: "Lista de compras", to: "/compras" },
+  { icon: <FaUsers />, label: "Lista de Usuarios", to: "/administracion" },
+  {
+    icon: <TbListNumbers />,
+    label: "Lista de ingredientes",
+    to: "/administracion/ingredientes",
+  },
   { icon: <FaReceipt />, label: "Recetas", to: "/recetas" },
   { icon: <MdManageAccounts />, label: "Perfil de usuario", to: "/perfil" },
   { icon: <FaRobot />, label: "Recetas con IA", to: "/ia" },

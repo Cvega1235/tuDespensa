@@ -12,6 +12,7 @@ import { AuthProvider } from "./context/AuthContext";
 import { ProtectedRoute } from "./ProtectedRoute";
 import NotFound from "./pages/NotFound";
 import { InicioAdministrador } from "./components/InicioAdministrador";
+import { Ingredientes } from "./pages/Ingredientes";
 function App() {
   return (
     <AuthProvider>
@@ -28,6 +29,7 @@ function App() {
           <Route element={<ProtectedRoute />}>
             <Route path="/administracion" element={<Administracion />}>
               <Route index element={<InicioAdministrador />} />
+              <Route path="ingredientes" element={<Ingredientes />} />
             </Route>
           </Route>
         </Routes>
