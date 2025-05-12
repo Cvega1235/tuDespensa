@@ -1,4 +1,40 @@
 import { User } from "../models/user.model.js";
+import TempUser from "../models/tempuser.model.js";
+import bcrypt from "bcryptjs";
+import { createAccessToken } from "../libs/jwt.js";
+import { generateVerificationCode } from "../utils/GenerateVerificationCode.js";
+import { sendVerificationEmail } from "../utils/sendVerificactionEmail.js";
+import { response } from "express";
+import jwt from "jsonwebtoken";
+import { TOKEN_SECRET } from "../config.js";
+// export const register = async (req, res) => {
+//   const { email, password, username } = req.body;
+
+//   try {
+//     const passwordHash = await bcrypt.hash(password, 10);
+
+//     const newUser = new User({
+//       username,
+//       email,
+//       password: passwordHash,
+//     });
+
+//     const userFound = await newUser.save();
+//     const token = await createAccessToken({ id: userFound._id });
+//     res.cookie("token", token);
+//     //res.json nos va devolver los datos que vayamos a usar en el frontend
+//     res.json({
+//       id: userFound._id,
+//       username: userFound.username,
+//       email: userFound.email,
+//       createdAd: userFound.createdAt,
+//       updateAt: userFound.updatedAt,
+//     });
+//   } catch (error) {
+//     res.status(500).json({ message: error.message });
+//   }
+// };
+import { User } from "../models/user.model.js";
 import bcrypt from "bcryptjs";
 import { createAccessToken } from "../libs/jwt.js";
 import { generateVerificationCode } from "../utils/GenerateVerificationCode.js";
@@ -35,6 +71,27 @@ import { TOKEN_SECRET } from "../config.js";
 // };
 
 export const register = async (req, res) => {
+  const { email, password, username, captcha, role } = req.body;
+  console.log(req.body);
+  if (!captcha) {
+    return res.status(400).json({ message: "reCAPTCHA es obligatorio" });
+  }
+  try {
+    const recaptchaResponse = await fetch(
+      `https://www.google.com/recaptcha/api/siteverify`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams({
+          secret: "6LcSyQQrAAAAACgW6vVqSLgxoSM967J2VAlyUzrm",
+          response: captcha,
+        }),
+      }
+    ).then((res) => res.json());
+    if (!recaptchaResponse.success) {
+      return res.status(400).json({ message: "reCAPTCHA inválido" });
+    }
+    const passwordHash = await bcrypt.hash(password, 10);
   const { email, password, username, captcha, role } = req.body;
   console.log(req.body);
   if (!captcha) {
@@ -229,15 +286,43 @@ export const login = async (req, res) => {
     if (!recaptchaResponse.success) {
       return res.status(400).json({ message: "reCAPTCHA inválido" });
     }
+  const { email, password, captcha } = req.body;
+  console.log(req.body);
+  if (!captcha) {
+    return res.status(400).json({ message: "reCAPTCHA es obligatorio" });
+  }
+  try {
+    //Validacion de reCAPTCHA con Google
+    const recaptchaResponse = await fetch(
+      `https://www.google.com/recaptcha/api/siteverify`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams({
+          secret: "6LcSyQQrAAAAACgW6vVqSLgxoSM967J2VAlyUzrm",
+          response: captcha,
+        }),
+      }
+    ).then((res) => res.json());
+    if (!recaptchaResponse.success) {
+      return res.status(400).json({ message: "reCAPTCHA inválido" });
+    }
 
+    //buscamos si el usuario existe
+    const userFound = await User.findOne({ email });
     //buscamos si el usuario existe
     const userFound = await User.findOne({ email });
 
     if (!userFound) return res.status(400).json({ message: "User not found" });
+    if (!userFound) return res.status(400).json({ message: "User not found" });
 
     //verificamos si la contraseña es correcta
     const isMatch = await bcrypt.compare(password, userFound.password);
+    //verificamos si la contraseña es correcta
+    const isMatch = await bcrypt.compare(password, userFound.password);
 
+    if (!isMatch)
+      return res.status(400).json({ message: "Incorrect password" });
     if (!isMatch)
       return res.status(400).json({ message: "Incorrect password" });
 
@@ -265,6 +350,11 @@ export const logout = (req, res) => {
     expires: new Date(0),
   });
   return res.sendStatus(200);
+  //para cerrar la sesion vamos a eliminar la cookie
+  res.cookie("token", "", {
+    expires: new Date(0),
+  });
+  return res.sendStatus(200);
 };
 export const verifyToken = async (req, res) => {
   const { token } = req.cookies;
@@ -284,7 +374,9 @@ export const verifyToken = async (req, res) => {
 
 export const profile = async (req, res) => {
   const userFound = await User.findById(req.user.id);
+  const userFound = await User.findById(req.user.id);
 
+  if (!userFound) return res.status(400).json({ message: "User not found" });
   if (!userFound) return res.status(400).json({ message: "User not found" });
 
   return res.json({

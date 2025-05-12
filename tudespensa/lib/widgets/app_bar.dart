@@ -11,7 +11,7 @@ AppBar buildAppBar(BuildContext context,
     title: Text(
       title,
       style: TextStyle(
-        color: TextColor,
+        color: Verde,
         fontSize: 27,
       ),
     ),

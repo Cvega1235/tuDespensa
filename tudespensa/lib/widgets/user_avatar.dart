@@ -10,7 +10,11 @@ class UserAvatar extends StatelessWidget {
     return IconButton(
       onPressed: () {},
       icon: ClipOval(
+<<<<<<< HEAD
         child: Image.asset('assets/images/chicoLentes.png'),
+=======
+        child: Image.asset('assets/images/mono.png'),
+>>>>>>> origin/andrew
       ),
     );
   }

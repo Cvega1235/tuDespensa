@@ -74,12 +74,20 @@ class NavItem extends StatelessWidget {
           width: 35,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
+<<<<<<< HEAD
               color: isActive ? PrimaryColor : Colors.transparent,
+=======
+              color: isActive ? BackgroundColor : Colors.transparent,
+>>>>>>> origin/andrew
               boxShadow: [
                 BoxShadow(
                   blurRadius: 6,
                   offset: const Offset(0, -2),
+<<<<<<< HEAD
                   color: isActive ? PrimaryColor : Colors.transparent,
+=======
+                  color: isActive ? BackgroundColor : Colors.transparent,
+>>>>>>> origin/andrew
                 )
               ]),
         )
